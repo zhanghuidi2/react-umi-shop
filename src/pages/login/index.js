@@ -4,7 +4,7 @@ import { connect, Redirect } from 'umi';
 import LoginForm from './LoginForm'
 
 const Login = ({ user, location, dispatch }) => {
-  console.log(location.state)
+  console.log(user)
   const { userid } = user.currentUser
   if (userid) {
     // 登陆了，并且来到了登陆页面，那么重定向到首页或者路径上带的参数

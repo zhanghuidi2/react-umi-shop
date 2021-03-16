@@ -1,10 +1,23 @@
-import React from 'react';
-import styles from './index.css';
-
-export default function Page() {
+import React, { useEffect }from 'react';
+import Header from './Header/'
+import MyList from './MyList/'
+import LoginOut from './LoginOut/'
+import { WingBlank } from 'antd-mobile';
+import {connect} from 'umi'
+const User = ({ dispatch, user }) => {
+  const {name, phone, icon} = user.userDetail
+  useEffect(() => {
+    dispatch({ type: 'user/getUserDetail' });
+  }, [])
+  const loginOut = () => {
+    dispatch({type: 'user/loginOut'})
+  }
   return (
-    <div>
-      <h1 className={styles.title}>Page user/index</h1>
-    </div>
+    <WingBlank size="lg">
+      <Header name={name} phone={phone} icon={icon} />
+      <MyList />
+      <LoginOut loginOut={ loginOut } />
+    </WingBlank>
   );
 }
+export default connect(({user})=>({user}))(User)
