@@ -33,17 +33,22 @@ export default defineConfig({
   routes: [
     // { path: '/login', component: '@/pages/login/index' }, // 写在这里也能题哦啊处tabbar，但是再次跳转到tabbar页面，都要重新mounted的
     {
-      path: '/', component: '@/layout/basicLayout', routes: [
-        { path: '/', component: '@/pages/index' },
+      path: '/',
+      component: '@/layout/basicLayout',
+      routes: [
+        { path: '/', component: '@/pages/home/index' },
         { path: '/login', component: '@/pages/login/index' }, // 如果登陆写在这里，那么basicLayout一直都没有卸载，useEffect如果写[]那么只会执行一次
         {
-          path: '/', component: '@/layout/providerLayout', routes: [
+          path: '/',
+          component: '@/layout/providerLayout',
+          routes: [
             { path: '/cart', component: '@/pages/cart/index' },
             { path: '/olist', component: '@/pages/olist/index' },
-            { path: '/user', component: '@/pages/user/index' }
-          ]}
-    ]}
-    
+            { path: '/user', component: '@/pages/user/index' },
+          ],
+        },
+      ],
+    },
   ],
   fastRefresh: {},
 });
