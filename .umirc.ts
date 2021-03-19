@@ -32,12 +32,15 @@ export default defineConfig({
   ],
   routes: [
     // { path: '/login', component: '@/pages/login/index' }, // 写在这里也能题哦啊处tabbar，但是再次跳转到tabbar页面，都要重新mounted的
+    { path: '/searchPage', component: '@/pages/searchPage/index' }, // onfig.js里也要写成大写（小写不报错，但有可能影响热更新,还有就是页面引入组件大小写不一致也会影响热更新
+
     {
       path: '/',
       component: '@/layout/basicLayout',
       routes: [
         { path: '/', component: '@/pages/home/index' },
         { path: '/login', component: '@/pages/login/index' }, // 如果登陆写在这里，那么basicLayout一直都没有卸载，useEffect如果写[]那么只会执行一次
+        { path: '/product/:id', component: '@/pages/product/[id]' },
         {
           path: '/',
           component: '@/layout/providerLayout',

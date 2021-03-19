@@ -30,7 +30,14 @@ export default function CarouselCom() {
       <Carousel autoplay={false} infinite>
         {list.map((val) => (
           <a key={val} href="http://www.kaikeba.com">
-            <img className={styles.itemImg} src={val.src} alt={val.alt} />
+            <img
+              className={styles.itemImg}
+              src={val.src}
+              alt={val.alt}
+              onLoad={() => {
+                window.dispatchEvent(new Event('resize'));
+              }}
+            />
           </a>
         ))}
       </Carousel>

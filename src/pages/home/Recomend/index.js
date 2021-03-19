@@ -38,6 +38,7 @@ export default function Recomend() {
         </Card>
       </WingBlank>
       <WhiteSpace size="lg" />
+      <WhiteSpace size="lg" />
       <WingBlank size="lg" className={styles.main}>
         <Card>
           <Card.Header title="猜你喜欢" />
@@ -51,6 +52,8 @@ export default function Recomend() {
           </Card.Body>
         </Card>
       </WingBlank>
+      <WhiteSpace size="lg" />
+      <div style={{ textAlign: 'center', height: '40px' }}>到底了～</div>
     </>
   );
 }

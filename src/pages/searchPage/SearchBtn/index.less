@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  .searchInput {
+    width: 560px;
+    border: 1px solid #eee;
+    :global {
+      .am-list-line {
+        padding: 0 10px;
+      }
+    }
+  }
+  .btn {
+    width: 100px;
+    @size: 90px;
+    height: @size;
+  }
+  // 更改全局的样式
+  :global {
+    a:hover {
+      color: #fff;
+    }
+  }
+}
