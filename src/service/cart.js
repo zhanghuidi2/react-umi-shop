@@ -1,7 +1,14 @@
 import request from '@/utils/request.js';
 
-// 获取首页商品数据
+// 获取购物车数据
 const getCartList = () => {
   return request('api/getCart');
 };
-export { getCartList };
+// 编辑购物车
+const editCart = (params) => {
+  return request('/api/cart/edit', {
+    method: 'POST',
+    data: params,
+  });
+};
+export { getCartList, editCart };

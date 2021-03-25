@@ -5,6 +5,7 @@ import { editCart } from '@/service/editCart';
 import List from './List/';
 import PayBar from './payBar/';
 import { WingBlank } from 'antd-mobile';
+import { connect, history } from 'umi';
 class Cart extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +42,18 @@ class Cart extends Component {
     data.forEach((item) => (item.checked = val));
     this.setState({ list: data });
   };
+  goPay = () => {
+    const data = this.state.list.filter((item) => item.checked);
+    // 数据要存起来，比如商品详情页面去结算的数据也要存取来
+    this.props.dispatch({
+      type: 'cart/saveCart',
+      payload: { data: data },
+    });
+    history.push({
+      pathname: '/confirmBill',
+      state: { tag: 1 },
+    });
+  };
 
   render() {
     const { list } = this.state;
@@ -48,10 +61,14 @@ class Cart extends Component {
     return (
       <WingBlank size="lg">
         <List list={list} updateProduct={this.updateProduct} />
-        <PayBar list={list} checkAllData={this.checkAllData} />
+        <PayBar
+          list={list}
+          checkAllData={this.checkAllData}
+          goPay={this.goPay}
+        />
       </WingBlank>
     );
   }
 }
 
-export default Cart;
+export default connect()(Cart);
